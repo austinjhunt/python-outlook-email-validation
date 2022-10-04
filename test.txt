@@ -1,0 +1,130 @@
+Received: from BYAPR04MB6150.namprd04.prod.outlook.com (2603:10b6:a03:e3::26)
+ by BYAPR04MB5750.namprd04.prod.outlook.com with HTTPS; Wed, 9 Mar 2022
+ 15:04:55 +0000
+Received: from DM6PR06CA0045.namprd06.prod.outlook.com (2603:10b6:5:54::22) by
+ BYAPR04MB6150.namprd04.prod.outlook.com (2603:10b6:a03:e3::26) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5038.14; Wed, 9 Mar 2022 15:04:53 +0000
+Received: from DM6NAM11FT047.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:54:cafe::f) by DM6PR06CA0045.outlook.office365.com
+ (2603:10b6:5:54::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14 via Frontend
+ Transport; Wed, 9 Mar 2022 15:04:53 +0000
+Authentication-Results: spf=pass (sender IP is 148.105.14.212)
+ smtp.mailfrom=mail212.sea81.mcsv.net; dkim=pass (signature was verified)
+ header.d=smashingmagazine.com;dmarc=pass action=none
+ header.from=smashingmagazine.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of mail212.sea81.mcsv.net
+ designates 148.105.14.212 as permitted sender)
+ receiver=protection.outlook.com; client-ip=148.105.14.212;
+ helo=mail212.sea81.mcsv.net;
+Received: from mail212.sea81.mcsv.net (148.105.14.212) by
+ DM6NAM11FT047.mail.protection.outlook.com (10.13.172.139) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5038.14 via Frontend Transport; Wed, 9 Mar 2022 15:04:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=smashingmagazine.com; s=k1; t=1646838291;
+	i=newsletter@smashingmagazine.com;
+	bh=t3u1lX26nPRNYACI6VjIsaUTMgcHPedvNnTZIYZ7Nug=;
+	h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+	 List-Unsubscribe-Post:Content-Type:MIME-Version:CC:Date:Subject;
+	b=eip3LtZ8NYi/F1SX2T5OkOTVIANusWI7jyUo/eH/Aq0XudKaQdmyuBl03IrYPvpVj
+	 rlftQxfgOAWN62qYIoGUXLoPwKgeYvK5ptS9SyslyeQeG/i10QomMmoC09zYK7WZcJ
+	 U5M9x0zqjGl8S0nKUo7OUeryQD99ON9pyA22PkUk=
+Received: from localhost (localhost [127.0.0.1])
+	by mail212.sea81.mcsv.net (Mailchimp) with ESMTP id 4KDFq74x8pzHXcZfH
+	for <huntaj@cofc.edu>; Wed,  9 Mar 2022 15:04:51 +0000 (GMT)
+Subject: EXTERNAL: Smashing Membership: Helping Ukraine, Video Course,
+ SmashingConfs
+From: =?utf-8?Q?Vitaly=20Friedman=20=28Smashing=20Membership=29?= <newsletter@smashingmagazine.com>
+Reply-To: =?utf-8?Q?Vitaly=20Friedman=20=28Smashing=20Membership=29?= <newsletter@smashingmagazine.com>
+To: <huntaj@cofc.edu>
+Date: Wed,  9 Mar 2022 15:04:37 +0000
+Message-ID: <16b832d9ad4b28edf261f34df.44cf812053.20220309150426.7fb78a3d5c.64ff819e@mail212.sea81.mcsv.net>
+X-Mailer: Mailchimp Mailer - **CID7fb78a3d5c44cf812053**
+X-Campaign: mailchimp16b832d9ad4b28edf261f34df.7fb78a3d5c
+X-campaignid: mailchimp16b832d9ad4b28edf261f34df.7fb78a3d5c
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=16b832d9ad4b28edf261f34df&id=7fb78a3d5c&e=44cf812053
+X-MC-User: 16b832d9ad4b28edf261f34df
+Feedback-ID: 1135689:1135689.1133729:us1:mc
+List-ID: 16b832d9ad4b28edf261f34dfmc list <16b832d9ad4b28edf261f34df.615305.list-id.mcsv.net>
+X-Accounttype: pd
+List-Unsubscribe: <https://smashingmagazine.us1.list-manage.com/unsubscribe?u=16b832d9ad4b28edf261f34df&id=e2973c0401&e=44cf812053&c=7fb78a3d5c>, <mailto:unsubscribe-mc.us1_16b832d9ad4b28edf261f34df.7fb78a3d5c-44cf812053@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1263234187"
+MIME-Version: 1.0
+Return-Path: bounce-mc.us1_1135689.1133729-44cf812053@mail212.sea81.mcsv.net
+X-MS-Exchange-Organization-ExpirationStartTime: 09 Mar 2022 15:04:53.3607
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 45358157-1ef4-402e-e2e8-08da01de2a7d
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: e285d438-dbba-4a4c-941c-593ba422deac:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-Matching-Connectors:
+ 132913118933607144;(d4849c4e-ea7c-4f88-968e-08d740901df5);()
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource:
+ DM6NAM11FT047.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 45358157-1ef4-402e-e2e8-08da01de2a7d
+X-MS-TrafficTypeDiagnostic: BYAPR04MB6150:EE_
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:148.105.14.212;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SKN;H:mail212.sea81.mcsv.net;PTR:mail212.sea81.mcsv.net;CAT:NONE;SFS:;DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Mar 2022 15:04:53.2200
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 45358157-1ef4-402e-e2e8-08da01de2a7d
+X-MS-Exchange-CrossTenant-Id: e285d438-dbba-4a4c-941c-593ba422deac
+X-MS-Exchange-CrossTenant-AuthSource:
+ DM6NAM11FT047.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6150
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.1414789
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5061.021
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506458)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?Rb1W04KlBb3BNz5R/BmmFfyDnhcSJBqXj1aNTobT4a8LW6oueY1zRfm07IGF?=
+ =?us-ascii?Q?QKxTjg5WzN6wocZqWsTJRq6VQ4wTm5+jhMHussivqKrAZLhihaLwuGuVsoPW?=
+ =?us-ascii?Q?c0twyP90BtbVnhRH/ZAvDX/vpZfJ6m9nxFVUIflxmt47ITEFUwZ9Pt5fb1GV?=
+ =?us-ascii?Q?FKbdF2K9uNvXO9lYdi4iVcSrDllE3eIAxbzZRcOwuKLn9Ojw2aw6bMv8lxTg?=
+ =?us-ascii?Q?csqrJVi2gj88jqRLpvDerkaRCNnsB71FspOPMcskLFvHLKRtMdtYyItuYUiP?=
+ =?us-ascii?Q?oplOom0BLJHbHcK2cCNzmdezEvPcJZXC+bJ4TFS8MTNwAc/RcUmC6dQc1qka?=
+ =?us-ascii?Q?2wiMkvM4b2wJD9RzesMzySJV3LUg+n6wwaoF/kRvz4iP6isZeaG3m6HXAmum?=
+ =?us-ascii?Q?L4J8WuoPl6tmZIpHXOBIdiFbWQxfKYocAaV09iKonxpYHdt7H2zhWYLxxRhD?=
+ =?us-ascii?Q?PVDe8quDJ16Z+dU0iOltBqgIgozekXeDjYpCrJNmf8UKvLcLuvPa3c7JyLaM?=
+ =?us-ascii?Q?tZr0CU9UWTazjdlczEqXTiXkwgEXCIEe4Eil8oAgU36xZnhnaWjXPsMesG7F?=
+ =?us-ascii?Q?L9ky0xMg0Kwbj4ZQ1RLCYz7KGLyUGarzopCH5kXbdQpHoIjoXSxXrJo60cm0?=
+ =?us-ascii?Q?POIVjtQE6+a1dn4WJxEsLjBFK2HhVxXtNE6vlnrJ/VGCEscTkOHMEogOcJfB?=
+ =?us-ascii?Q?hx3gSJHxk+DmKl9Hyz+y5eMvKWFMLt9YSUe4nR/TKMREs70wBgsO83rmFggx?=
+ =?us-ascii?Q?Y6LkC21JSJvzKbBpWPlwJkdhwLmZUXlmY82g7ZIPHDrZNfDd7pUhftWTZdvy?=
+ =?us-ascii?Q?ZFZUOe+yUdLLSChHh6CnAC+CC0tEjraa7dMPnfK8cWB/65pqnz7tQzZhHHyj?=
+ =?us-ascii?Q?177+bZlvdRPVwT7IJqUATIhA96oZ7w0luGAWQHAiWELm+PLZJE/oiZD37i4/?=
+ =?us-ascii?Q?Mo/+OEjFvwCqfdUwYCgni/7eH0J6wjyZMDyaOSzTve/+viKZves9CFAEXKVJ?=
+ =?us-ascii?Q?4AhBqwiZx9EP780prht3ZtVEtrTGUvcG9laxk1PadampAO+j7n32j1Cb3gQo?=
+ =?us-ascii?Q?WU17WQHmanvQqcp/Wdd264aSPtSWIp5/nkLLiyVtSWMyxG6n6Lt+oI6T/etu?=
+ =?us-ascii?Q?v7C11KuvI/x5/TGmYK5+Vs7xw56KYfPPwVcmhrtijFEF4PJ3xrKzMx0S4ve7?=
+ =?us-ascii?Q?kn5995UCzj1DVtNphCxblaUkTV2J9esa14b8BSTG7YiwlBn/PzApl0e2aVid?=
+ =?us-ascii?Q?jltfHQjdxWp9T2zcjadnFlLPehbjrIZHwFb6H6Ez2bMay0RrpVJCDBVAvOsc?=
+ =?us-ascii?Q?nbfn1tO/JysVuy/vgjD/rrZqzZk3kMPGWrqQeQUeD/jdTUfL8BDjA0rtYR3z?=
+ =?us-ascii?Q?WDnp6eu3YaKIUL4UlLJS4Kw1Q/6H4JgJIg+0e3N8xg9s8705xDBgiTE2N0wm?=
+ =?us-ascii?Q?5gG3sX9zdRkLsRV/yiG4pc7cHfSm6dS8X5FdIxG/5Opf6wdyUNsNm9gaNqKK?=
+ =?us-ascii?Q?lrwpltDLga4rqr5Gatxn/hILlYTGymGLY5mvKBuynqs5Dl30GsBpXkDfydpC?=
+ =?us-ascii?Q?xhn9tgFsqBRXw7QPcp9agAJXr+kKIz3WJuQ2IlY+MHEQ8BPnUxyD4hvMKyHc?=
+ =?us-ascii?Q?iRj9pep3yQOefzEzsPJY2Sw2iOYM0mkntZcL9QmhJBWfL+Sh3dIvG42zTegy?=
+ =?us-ascii?Q?30SgpBLnMYAEEzKTL8fjVcMxaDPxth/EanoUoh2iwhq9DklNfq3+P14ZYY1J?=
+ =?us-ascii?Q?nEF07qVipVsPdhHOIXJEIglaIh+pV5m3yrPRh4bD86nhQWmzqxdjUpA4Y/N1?=
+ =?us-ascii?Q?G45O7uVfFafUQ7RbC3GtfYXSffMGLwW/OsGL9mMnirjFC51/2LBP6p3hru6/?=
+ =?us-ascii?Q?XT52SYG/6Y2ONrPR3fn2+ERnptCothNPzF5miR67CBdkbrT19Cdz2sCpqKvB?=
+ =?us-ascii?Q?c3D5HCfsEnngqSdUVQQabQ/iyOYjJGKcnWNdcjvqggTefNYpPgo0/GuXyWJQ?=
+ =?us-ascii?Q?hgucZSsD50vU2B8hYN7BcxPIetyLrwNU1iIQTd7TCl8FVsiYqGFizYcBDWBX?=
+ =?us-ascii?Q?WRLbtCK2a9gFjFyfM7ifIK1rLe1Tf0UPk1WnfAfT5zxYk0KrL06iI2kwp+mz?=
+ =?us-ascii?Q?T28eneSlhp4Q?=
+X-MS-Exchange-Safelinks-Url-KeyVer: 1
