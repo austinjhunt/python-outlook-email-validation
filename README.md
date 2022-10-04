@@ -3,7 +3,7 @@ This repository was created to explore email validation with Python. It uses [py
 
 Still a work in progress. 
 
-Sample output as of 10/4/2022 when run against an email I received from a [Smashing Magazine](https://www.smashingmagazine.com/) Newsletter subscription. 
+Sample output as of 10/4/2022 when run against an email I received from a [Smashing Magazine](https://www.smashingmagazine.com/) Newsletter subscription. The DKIM failure is actually what I would expect since it looks like a mailing list is used for this, and this problem is actually one of the driving reasons behind the creation of the [Authenticated Received Chain (ARC) protocol](https://en.wikipedia.org/wiki/Authenticated_Received_Chain) published in 2019. 
 ```
 [{'received_from': 'BYAPR04MB6150.namprd04.prod.outlook.com', 'received_by': 'BYAPR04MB5750.namprd04.prod.outlook.com'}, {'received_from': 'DM6PR06CA0045.namprd06.prod.outlook.com', 'received_by': 'BYAPR04MB6150.namprd04.prod.outlook.com'}, {'received_from': 'DM6NAM11FT047.eop-nam11.prod.protection.outlook.com', 'received_by': 'DM6PR06CA0045.outlook.office365.com'}, {'received_from': 'mail212.sea81.mcsv.net', 'received_by': 'DM6NAM11FT047.mail.protection.outlook.com'}]
 Total mailservers involved: 5
