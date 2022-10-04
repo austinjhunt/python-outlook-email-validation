@@ -1,2 +1,4 @@
 dnspython==2.2.1
+pyasn1==0.4.8
 pywin32==304
+rsa==4.9

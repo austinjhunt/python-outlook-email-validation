@@ -1,8 +1,11 @@
+from hashlib import sha256
 import win32com.client
 import os 
 from datetime import datetime,timedelta
 import dns.resolver
 import re 
+import hashlib 
+import rsa, base64
 mapi = win32com.client.Dispatch('outlook.application').GetNamespace('MAPI')
 DEFAULT_ACCOUNT = mapi.Accounts[0]
 INBOX_FOLDER_ID = 6
@@ -155,12 +158,92 @@ It is RECOMMENDED that SMTP receivers record the result of SPF
    appear above all other Received-SPF fields in the message. 
 """
 
+### DKIM ###
+def get_dkim_signature_from_headers(headers): 
+    dkim_sig = []
+    dkim_line = False 
+    for line in headers.split('\n'):
+        if line.startswith('DKIM-Signature'):
+            dkim_line = True
+        if line.startswith('Received:'):
+            dkim_line = False 
+        if dkim_line: 
+            dkim_sig.append(line) 
+    return ''.join([el.replace('\r','').replace('\t','').replace('\n','') for el in dkim_sig])
+
+
+
+def hash_email_body(body, length): 
+    canonbody = body.strip().encode() + b"\r\n"
+    hashed = base64.b64encode(sha256(canonbody).digest())
+    return hashed.decode()
+
+def verify_dkim_signature(dkim_signature, message): 
+    """Given a DKIM signature, verify the message is untampered and authentic"""
+    # get domain. then get selector. need to nslookup with  
+    _split = [i.strip() for i in dkim_signature.split(';')]
+    key_vals = {}
+    for el in _split: 
+        el_ends_with_equals = el.endswith('=')
+        el_split = el.split('=')
+        key_vals[el_split[0]] = el_split[1] 
+        if el_ends_with_equals:
+            key_vals[el_split[0]] += '='
+    print(f'Selector = {key_vals["s"]}')
+    print(f'Domain = {key_vals["d"]}')
+    selector = key_vals['s']
+    domain = key_vals['d']
+    signing_algorithm = key_vals['a']
+    header_fields = key_vals['h'] # list of header fields that were signed; 
+    body_hash = key_vals['bh'] 
+    body_length = 0
+    if 'l' in key_vals:
+        body_length = key_vals['l'] 
+        print(f'Body length = {body_length} (to use for hashing)') 
+    verification_body_hash = hash_email_body(message.Body, body_length) 
+    try:
+        assert verification_body_hash == body_hash 
+    except AssertionError: 
+        print(f'Verification Body Hash {verification_body_hash} NOT EQUAL to signed body hash {body_hash}; possibly due to mailing list processing')
+        return False 
+    headers_body_signature = key_vals['b']
+    dns_query_domain = f'{selector}._domainkey.{domain}'
+    response = dns.resolver.resolve(dns_query_domain, 'TXT').response.answer
+    for record in response: 
+        if 'TXT' in str(record):
+            response = str(record)
+            break 
+    
+    txt_record = response.split(' TXT ')[-1]
+    # remove beginning and trailing quotes 
+    txt_record = txt_record[1:-1] 
+    _split = [el.strip() for el in txt_record.split(';')]
+    _split.remove('')
+    print(_split)
+    dkim_key_vals = {}
+    for el in _split:
+        el_ends_with_equals = el.endswith('=')
+        el_split = el.split('=')
+        dkim_key_vals[el_split[0]] = el_split[1]
+        if el_ends_with_equals:
+            dkim_key_vals[el_split[0]]+= '='
+    public_key = dkim_key_vals['p']
+    print(f'DKIM public key = {public_key}')
+    print(f'Decrypting the DKIM signature with public key...')
+    # decrypt the "b" value, the signature of headers & body 
+    decrypted_digest_from_signature = rsa.decrypt(
+        base64.b64decode(headers_body_signature), 
+        public_key
+    )
+    print(f'Decrypted message digest: {decrypted_digest_from_signature}')
+ 
+
 
 ### SPF ###
 messages = inbox.Items
 messages = filter_messages_by_sender_email_address(messages, 'newsletter@smashingmagazine.com') 
 
-def validate_message(m): 
+def validate_message(m):   
     headers = get_message_headers(m)   
     mailserver_chain = get_mailserver_headers_chain(headers) 
     addresses = get_addresses_of_mail_servers_from_mailserver_headers_chain(mailserver_chain)
@@ -170,7 +253,9 @@ def validate_message(m):
     print(f'Obtaining Authorized Senders for Return-Path domain {return_path_domain}...')
     save_domain_authorized_senders(return_path_domain) 
     display_domain_spf_map()
-     
+    with open(f'email.txt', 'w') as f:
+        f.write(headers) 
+    print('Checking SPF...')
     if get_received_spf_header_value(headers):
         # is this sufficient? If so, do the authorized senders of the return path domain even 
         # need to be checked above? 
@@ -178,6 +263,13 @@ def validate_message(m):
     else:
         print('SPF=Fail')
 
+    print('Checking DKIM...')
+    dkim_signature = get_dkim_signature_from_headers(headers)
+    print(f'DKIM Signature: {dkim_signature}')
+    if verify_dkim_signature(dkim_signature, message=m):
+        print('DKIM verification succeeded')
+    else:
+        print('DKIM verification failed')
 if __name__ == "__main__":
     validate_message(messages.GetFirst())
  
